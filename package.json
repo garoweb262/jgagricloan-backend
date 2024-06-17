@@ -1,0 +1,42 @@
+{
+  "name": "jgagricloan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "build": "babel src -d dist",
+    "migrate": "sequelize-cli db:migrate"
+  },
+  "keywords": [],
+  "author": "Gazzali Ahmad Garo",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cookie": "^0.5.0",
+    "cors": "^2.8.5",
+    "crypto-random-string": "^5.0.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-routes": "^1.0.1",
+    "fastest-validator": "^1.12.0",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.5-lts.1",
+    "multex": "^0.1.1",
+    "mysql2": "^2.3.3",
+    "nodemailer": "^6.9.7",
+    "nodemailer-express-handlebars": "^6.0.0",
+    "pg": "^8.8.0",
+    "randomstring": "^1.2.2",
+    "sequelize": "^6.35.0",
+    "uuid": "^3.4.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16",
+    "sequelize-cli": "^6.6.2"
+  }
+}
