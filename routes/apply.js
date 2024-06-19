@@ -6,6 +6,7 @@ const router = express.Router();
 router.post("/", applyController.create);
 router.get("/counts", statisticsController.statistics);
 router.get("/:id", applyController.getById);
+router.get("/psn/:psn", applyController.getByPsn);
 router.get("/", applyController.index);
 
 router.delete("/:id", applyController.destroy);

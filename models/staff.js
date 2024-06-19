@@ -15,8 +15,13 @@ module.exports = (sequelize, DataTypes) => {
   }
   Staff.init({
     fullname: DataTypes.STRING,
-    psn: DataTypes.INTEGER,
-    ipps_id: DataTypes.STRING
+    psn: DataTypes.STRING,
+    ipps_id: DataTypes.STRING,
+    mda: DataTypes.STRING,
+    bank: DataTypes.STRING,
+    accountNo: DataTypes.STRING,
+    bvn: DataTypes.STRING,
+    gradeLevel: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Staff',

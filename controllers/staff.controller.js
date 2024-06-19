@@ -13,6 +13,11 @@ function create(req, res) {
         fullname: req.body.fullname,
         psn: req.body.psn,
         ipps_id: req.body.ipps_id,
+        mda: req.body.mda,
+        bank: req.body.bank,
+        accountNo: req.body.accountNo,
+        bvn: req.body.bvn,
+        gradeLevel: req.body.gradeLevel,
       };
       models.Staff.create(staff)
         .then((result) => {
@@ -90,28 +95,37 @@ function getById(req, res) {
         message: error ?? `Something went wrong..`,
       });
     });
-}
-const getByPsn = (req, res) => {
-  const psn = req.params.psn;
-  models.Staff.findOne({
-    where: { psn: psn },
-  })
-    .then((result) => {
-      if (result) {
-        res.status(200).json({ data: result, message: "Employee Found", success: true });
-      } else {
-        res.status(404).json({
-          message: "Employee not found",
-          success: false,
-        });
-      }
-    })
-    .catch((error) => {
-      res.status(500).json({
-        message: error.message ?? "Something went wrong..",
+}const getByPsn = async (req, res) => {
+  try {
+    const psn = req.params.psn;
+
+    // Check if an application already exists with the given psn
+    const existingApplication = await models.Application.findOne({ where: { psn } });
+    if (existingApplication) {
+      return res.status(400).json({
+        message: 'Application with this PSN already exists.',
+        success: false,
       });
+    }
+
+    // If no existing application is found, proceed to find the staff data
+    const staff = await models.Staff.findOne({ where: { psn } });
+    if (staff) {
+      res.status(200).json({ data: staff, message: "Employee Found", success: true });
+    } else {
+      res.status(404).json({
+        message: "Employee not found",
+        success: false,
+      });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: error.message ?? "Something went wrong.",
     });
+  }
 };
+
 
 function index(req, res) {
   models.Staff.findAll()
@@ -137,6 +151,11 @@ function update(req, res) {
     fullname: req.body.fullname,
     psn: req.body.psn,
     ipps_id: req.body.ipps_id,
+    mda: req.body.mda,
+    bank: req.body.bank,
+    accountNo: req.body.accountNo,
+    bvn: req.body.bvn,
+    gradeLevel: req.body.gradeLevel,
   };
 
   models.Staff.update(updatedDept, { where: { id: id } })
