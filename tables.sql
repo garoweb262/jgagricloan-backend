@@ -13,6 +13,14 @@ CREATE TABLE Staffs (
     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+CREATE TABLE Portals (
+    id SERIAL PRIMARY KEY,
+    open VARCHAR(255),
+    openTime VARCHAR(255),
+    closeTime VARCHAR(255),
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
 -- Creating the Application table
 CREATE TABLE Applications (
     id SERIAL PRIMARY KEY,
@@ -26,13 +34,10 @@ CREATE TABLE Applications (
     bank VARCHAR(255),
     accountNo VARCHAR(255),
     mda VARCHAR(255),
-    state VARCHAR(255),
-    judiciary VARCHAR(255),
-    assembly VARCHAR(255),
-    phc VARCHAR(255),
-    lgea VARCHAR(255),
+    gender VARCHAR(255),
+    appointmentType VARCHAR(255),
+    cropType VARCHAR(255),
     lga VARCHAR(255),
-    polappointee VARCHAR(255),
     farmLoc VARCHAR(255),
     farmLga VARCHAR(255),
     farmWard VARCHAR(255),

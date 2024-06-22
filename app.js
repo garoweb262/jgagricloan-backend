@@ -8,13 +8,29 @@ const bodyParser = require("body-parser");
 const authRoute = require("./routes/auth");
 const staffRoute = require("./routes/staff");
 const applyRoute = require("./routes/apply");
+const portalRoute = require("./routes/portal");
 const { endPoint } = require("./config/constant");
 
+// Define your allowed origins
+const allowedOrigins = [
+  "http://localhost:3002",
+  "https://www.jigawaworkeragricsupportschemes.com"
+];
+
+// Configure CORS options
 let corsOptions = {
-  origin: "http://localhost:3002", // Update to your frontend origin
+  origin: function (origin, callback) {
+    // Check if the origin is in the allowedOrigins array
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   optionsSuccessStatus: 200,
 };
 
+// Use CORS middleware with the configured options
 app.use(cors(corsOptions)); // Use the configured CORS options
 
 // Middleware
@@ -49,6 +65,7 @@ app.get("/ping", async (req, res) => {
 app.use(endPoint + "auth", authRoute);
 app.use(endPoint + "staff", staffRoute);
 app.use(endPoint + "apply", applyRoute);
+app.use(endPoint + "portal", portalRoute);
 
 // Server listen
 const port = process.env.APP_PORT || 5009;

@@ -39,25 +39,16 @@ module.exports = {
       mda: {
         type: Sequelize.STRING
       },
-      state: {
+      gender: {
         type: Sequelize.STRING
       },
-      judiciary: {
+      appointmentType: {
         type: Sequelize.STRING
       },
-      assembly: {
-        type: Sequelize.STRING
-      },
-      phc: {
-        type: Sequelize.STRING
-      },
-      lgea: {
+      cropType: {
         type: Sequelize.STRING
       },
       lga: {
-        type: Sequelize.STRING
-      },
-      polappointee: {
         type: Sequelize.STRING
       },
       farmLoc: {
