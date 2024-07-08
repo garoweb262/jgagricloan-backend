@@ -9,12 +9,14 @@ const authRoute = require("./routes/auth");
 const staffRoute = require("./routes/staff");
 const applyRoute = require("./routes/apply");
 const portalRoute = require("./routes/portal");
+const approvedRoute = require("./routes/approved");
 const { endPoint } = require("./config/constant");
 
 // Define your allowed origins
 const allowedOrigins = [
   "http://localhost:3002",
-  "https://www.jigawaworkeragricsupportschemes.com"
+  "https://www.jigawaworkeragricsupportschemes.com",
+  "https://jigawaworkeragricsupportschemes.com"
 ];
 
 // Configure CORS options
@@ -28,10 +30,12 @@ let corsOptions = {
     }
   },
   optionsSuccessStatus: 200,
+
 };
 
 // Use CORS middleware with the configured options
 app.use(cors(corsOptions)); // Use the configured CORS options
+
 
 // Middleware
 app.use(express.json({ limit: "50mb" }));
@@ -66,6 +70,7 @@ app.use(endPoint + "auth", authRoute);
 app.use(endPoint + "staff", staffRoute);
 app.use(endPoint + "apply", applyRoute);
 app.use(endPoint + "portal", portalRoute);
+app.use(endPoint + "approved", approvedRoute);
 
 // Server listen
 const port = process.env.APP_PORT || 5009;
