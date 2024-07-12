@@ -1,10 +1,10 @@
 {
   "development": {
-    "username": "g4j93ehjbcqa7nie",
-    "password": "jfr3vwlaq3vp50yd",
-    "database": "eovkvz5rll4gksqk",
+    "username": "root",
+    "password": "yZOkDi1yewWqfoQeeEjp8TM2ptWKnlK2",
+    "database": "jgagric",
     "port": "3306",
-    "host": "zpfp07ebhm2zgmrm.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+    "host": "zhijah.stackhero-network.com",
     "dialect": "mysql"
   },
   "test": {
@@ -15,11 +15,11 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "g4j93ehjbcqa7nie",
-    "password": "jfr3vwlaq3vp50yd",
-    "database": "eovkvz5rll4gksqk",
+    "username": "root",
+    "password": "yZOkDi1yewWqfoQeeEjp8TM2ptWKnlK2",
+    "database": "jgagric",
     "port": "3306",
-    "host": "zpfp07ebhm2zgmrm.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+    "host": "zhijah.stackhero-network.com",
     "dialect": "mysql"
   }
 }
