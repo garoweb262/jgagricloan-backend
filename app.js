@@ -17,7 +17,7 @@ const { createAdmin } = require("./controllers/user.controller");
 
 app.set('trust proxy', 1);
 // List of IPs to be exempt from rate limiting
-const exemptIPs = ['192.168.203.217', "197.210.53.195", "10.101.15.214"]; // Add the IPs that you want to exclude
+const exemptIPs = ['192.168.203.217', "192.168.43.84", "197.210.53.195", "10.101.15.214"]; // Add the IPs that you want to exclude
 
 // Rate limiter middleware
 const limiter = rateLimit({
