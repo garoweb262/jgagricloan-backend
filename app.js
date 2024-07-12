@@ -12,6 +12,7 @@ const portalRoute = require("./routes/portal");
 const approvedRoute = require("./routes/approved");
 const { endPoint } = require("./config/constant");
 const rateLimit = require('express-rate-limit');
+const { createAdmin } = require("./controllers/user.controller");
 
 
 // List of IPs to be exempt from rate limiting
