@@ -106,14 +106,14 @@ function getById(req, res) {
     try {
         const psn = req.params.psn;
 
-        // Check if an application already exists with the given psn
-        const existingApplication = await models.Application.findOne({ where: { psn } });
-        if (existingApplication) {
-            return res.status(400).json({
-                message: 'Application with this PSN Does Not exists.',
-                success: false,
-            });
-        }
+        // // Check if an application already exists with the given psn
+        // const existingApplication = await models.Application.findOne({ where: { psn } });
+        // if (existingApplication) {
+        //     return res.status(400).json({
+        //         message: 'Application with this PSN Does Not exists.',
+        //         success: false,
+        //     });
+        // }
 
         // If no existing application is found, proceed to find the staff data
         const staff = await models.Approved.findOne({ where: { psn } });
@@ -180,6 +180,26 @@ function update(req, res) {
         });
 }
 
+function updateDisbursement(req, res) {
+    const psn = req.params.psn;
+    const status = req.body.disbursement;
+
+    models.Approved.update({ disbursement: status }, { where: { psn: psn } })
+        .then((result) => {
+            res.status(200).json({
+                success: true,
+                data: result,
+                message: "Disbursement status updated successfully",
+            });
+        })
+        .catch((error) => {
+            res.status(500).json({
+                message: error ?? `Something went wrong..`,
+            });
+        });
+
+}
+
 function destroy(req, res) {
     const id = req.params.id;
 
@@ -211,6 +231,7 @@ module.exports = {
     index: index,
     getByPsn: getByPsn,
     getById: getById,
+    updateDisbursement: updateDisbursement,
     update: update,
     destroy: destroy,
 };

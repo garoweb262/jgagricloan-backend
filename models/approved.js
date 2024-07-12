@@ -69,6 +69,12 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        disbursement: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false,
+        },
+
         issueDate: {
             type: DataTypes.DATE,
             allowNull: false
