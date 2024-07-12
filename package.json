@@ -2,10 +2,12 @@
   "name": "jgagricloan",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "start": "node app.js",
-    "build": "babel src -d dist",
     "migrate": "sequelize-cli db:migrate"
   },
   "keywords": [],
