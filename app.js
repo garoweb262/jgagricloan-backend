@@ -10,6 +10,7 @@ const staffRoute = require("./routes/staff");
 const applyRoute = require("./routes/apply");
 const portalRoute = require("./routes/portal");
 const approvedRoute = require("./routes/approved");
+const plaRoute = require("./routes/pla");
 const { endPoint } = require("./config/constant");
 const rateLimit = require('express-rate-limit');
 const { createAdmin } = require("./controllers/user.controller");
@@ -91,6 +92,7 @@ app.use(endPoint + "staff", staffRoute);
 app.use(endPoint + "apply", applyRoute);
 app.use(endPoint + "portal", portalRoute);
 app.use(endPoint + "approved", approvedRoute);
+app.use(endPoint + "pla", plaRoute);
 
 // Server listen
 const port = process.env.PORT || 5001;
