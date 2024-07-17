@@ -2,7 +2,7 @@ const models = require("../models");
 
 function create(req, res) {
     models.Pla.findOne({
-        where: { psn: req.body.psn },
+        where: { plaNumber: req.body.pla },
     }).then((result) => {
         if (result) {
             res.status(200).json({
@@ -48,12 +48,12 @@ const uploadStaff = async (req, res) => {
         // Find existing staff by PSN
         const existingStaff = await models.Pla.findAll({
             where: {
-                psn: staffList.map(staff => staff.psn),
+                plaNumber: staffList.map(staff => staff.plaNumber),
             },
         });
 
-        const existingPsnSet = new Set(existingStaff.map(staff => staff.psn));
-        const duplicateStaff = staffList.filter(staff => existingPsnSet.has(staff.psn));
+        const existingPsnSet = new Set(existingStaff.map(staff => staff.plaNumber));
+        const duplicateStaff = staffList.filter(staff => existingPsnSet.has(staff.plaNumber));
 
         if (duplicateStaff.length > 0) {
             return res.status(400).json({
@@ -98,7 +98,7 @@ function getById(req, res) {
         });
 } const getByPla = async (req, res) => {
     try {
-        const psn = req.params.psn;
+        const pla = req.params.pla;
 
         // // Check if an application already exists with the given psn
         // const existingApplication = await models.Application.findOne({ where: { psn } });
@@ -110,7 +110,7 @@ function getById(req, res) {
         // }
 
         // If no existing application is found, proceed to find the staff data
-        const staff = await models.Pla.findOne({ where: { psn } });
+        const staff = await models.Pla.findOne({ where: { plaNumber: pla } });
         if (staff) {
             res.status(200).json({ data: staff, message: "Employee Found", success: true });
         } else {
@@ -150,7 +150,7 @@ function update(req, res) {
     const id = req.params.id;
     const updatedDept = {
         fullname: req.body.fullname,
-        psn: req.body.psn,
+        plaNumber: req.body.pla,
         ipps_id: req.body.ipps_id,
         mda: req.body.mda,
         bank: req.body.bank,
@@ -175,10 +175,10 @@ function update(req, res) {
 }
 
 function updateDisbursement(req, res) {
-    const psn = req.params.psn;
+    const pla = req.params.pla;
     const status = req.body.disbursement;
 
-    models.Pla.update({ disbursement: status }, { where: { psn: psn } })
+    models.Pla.update({ disbursement: status }, { where: { plaNumer: pla } })
         .then((result) => {
             res.status(200).json({
                 success: true,
