@@ -178,7 +178,7 @@ function updateDisbursement(req, res) {
     const pla = req.params.pla;
     const status = req.body.disbursement;
 
-    models.Pla.update({ disbursement: status }, { where: { plaNumer: pla } })
+    models.Pla.update({ disbursement: status }, { where: { plaNumber: pla } })
         .then((result) => {
             res.status(200).json({
                 success: true,
