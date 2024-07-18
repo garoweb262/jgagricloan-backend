@@ -16,21 +16,21 @@ const rateLimit = require('express-rate-limit');
 const { createAdmin } = require("./controllers/user.controller");
 
 
-// app.set('trust proxy', 1);
-// // List of IPs to be exempt from rate limiting
-// const exemptIPs = ['192.168.203.217', "192.168.43.84", "197.210.53.195", "10.101.15.214"]; // Add the IPs that you want to exclude
+app.set('trust proxy', 1);
+// List of IPs to be exempt from rate limiting
+const exemptIPs = ['192.168.203.217', "192.168.43.84", "197.210.53.195", "10.101.15.214"]; // Add the IPs that you want to exclude
 
-// // Rate limiter middleware
-// const limiter = rateLimit({
-//   windowMs: 15 * 60 * 1000, // 15 minutes 
-//   max: 15, // limit each IP to 20 requests per windowMs
-//   message: "Too many requests from this IP, please try again after a minute",
-//   headers: true, // include rate limit info in the response headers
-//   skip: (req, res) => {
-//     return exemptIPs.includes(req.ip);
-//   }
-// });
-// app.use(limiter);
+// Rate limiter middleware
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes 
+  max: 15, // limit each IP to 20 requests per windowMs
+  message: "Too many requests from this IP, please try again after a minute",
+  headers: true, // include rate limit info in the response headers
+  skip: (req, res) => {
+    return exemptIPs.includes(req.ip);
+  }
+});
+app.use(limiter);
 
 
 // Define your allowed origins
