@@ -1,10 +1,10 @@
 {
   "development": {
     "username": "root",
-    "password": "yZOkDi1yewWqfoQeeEjp8TM2ptWKnlK2",
-    "database": "jgagric",
+    "password": null,
+    "database": "agric",
     "port": "3306",
-    "host": "zhijah.stackhero-network.com",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
